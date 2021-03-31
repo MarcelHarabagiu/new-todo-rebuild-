@@ -47,8 +47,8 @@ function dom() {
 
 const modelTodos = [];
 
-function addTodo() {
-  preventDefault();
+function addTodo(event) {
+  event.preventDefault();
   const todoText = todoInput.value;
   const newId = addToModel(todoText);
   todoInput.value = '';
