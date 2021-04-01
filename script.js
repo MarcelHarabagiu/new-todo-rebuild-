@@ -1,73 +1,33 @@
-
-// let todoInput;
-// let todoButton;
-// let todoList;
-
-// todo crate array to hold all items
-// array should contain OBJECTs not the string
-// the OBjects will have a space for the future properties.
-
-/**
- * step 1) create array to hold items
- * 2) add new items to array
- * 3) add element to screen BASED on update to array
- * do #3 by passing the new todo OBJECT into a function that adds it to the screen
- */
-
-// todoInput = document.querySelector('.todo-input');
-// todoButton = document.querySelector('.todo-button');
-// todoList = document.querySelector('.todo-list');
-// todoButton.addEventListener('click', addTodo);
-
-// function addTodo(event) {
-//   event.preventDefault();
-//   const todoDiv = document.createElement('div');
-//   todoDiv.classList.add('todo');
-//   const newTodo = document.createElement('li');
-//   newTodo.innerText = todoInput.value;
-//   newTodo.classList.add('todo-item');
-//   todoDiv.appendChild(newTodo);
-//   todoList.appendChild(todoDiv);
-//   todoInput.value = '';
-// }
-
-
-let todoInput;
-let todoButton;
-let todoList;
-
-
-window.onload = dom;
-function dom() {
-  todoInput = document.querySelector('.todo-input');
-  todoButton = document.querySelector('.todo-button');
-  todoList = document.querySelector('.todo-list');
+let dom = () => {
+  let todoButton = document.querySelector('.todo-button');
   todoButton.addEventListener('click', addTodo);
 }
+window.onload = dom;
 
 const modelTodos = [];
 
-function addTodo(event) {
+let getTodoInput = () => document.querySelector('.todo-input'); // same as { return xx; }
+let getTodoList = () => document.querySelector('.todo-list');
+
+let addTodo = (event) => {
   event.preventDefault();
+  const todoInput = getTodoInput();
   const todoText = todoInput.value;
-  const newId = addToModel(todoText);
-  todoInput.value = '';
-  createElement(todoText);
+  const newTodoObj = addToModel(todoText);
+  todoInput.value = ''; // clear input
+  createElement(newTodoObj);
 }
-
-
 let addToModel = (text) => {
-  modelTodos.push({text});
-  return text;
+  const newTodo = {text};
+  modelTodos.push(newTodo);  // non es6 => { text: text }
+  return newTodo;
 }
-let createElement = (text) => {
+let createElement = (newTodoObj) => {
   const todoDiv = document.createElement('div');
   todoDiv.classList.add('todo');
-  const newTodo = document.createElement('li');
-  newTodo.innerText = text;
-  newTodo.classList.add('todo-item');
-  todoDiv.appendChild(newTodo);
-  todoList.appendChild(todoDiv);
-  return todoDiv;
+  const todoLi = document.createElement('li');
+  todoLi.innerText = newTodoObj.text;
+  todoLi.classList.add('todo-item');
+  todoDiv.appendChild(todoLi);
+  getTodoList().appendChild(todoDiv);
 }
-
