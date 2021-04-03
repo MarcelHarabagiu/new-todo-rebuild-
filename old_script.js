@@ -4,30 +4,30 @@ let dom = () => {
 }
 window.onload = dom;
 
-let addTodo = () => {
+const modelTodos = [];
+
+let getTodoInput = () => document.querySelector('.todo-input'); // same as { return xx; }
+let getTodoList = () => document.querySelector('.todo-list');
+
+let addTodo = (event) => {
+  event.preventDefault();
   const todoInput = getTodoInput();
   const todoText = todoInput.value;
   const newTodoObj = addToModel(todoText);
-  todoInput.value = '';
+  todoInput.value = ''; // clear input
   createElement(newTodoObj);
 }
-let getTodoInput = () => document.querySelector('.todo-input');
-let getTodoList = () => document.querySelector('.todo-list');
-
+let addToModel = (text) => {
+  const newTodo = {text};
+  modelTodos.push(newTodo);  // non es6 => { text: text }
+  return newTodo;
+}
 let createElement = (newTodoObj) => {
   const todoDiv = document.createElement('div');
   todoDiv.classList.add('todo');
   const todoLi = document.createElement('li');
   todoLi.innerText = newTodoObj.text;
-  todoLi.classList.add('todo.item');
+  todoLi.classList.add('todo-item');
   todoDiv.appendChild(todoLi);
-  getTodoList().appendChild(todoDiv);
+  getTodoList().appendChild(todoDiv);5
 }
-const modelTodos = [];
-
-const addToModel = (text) => {
-  const newTodo = { text };
-  modelTodos.push(newTodo); // non es6 => { text: text }
-  return newTodo;
-}
-
