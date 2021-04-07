@@ -8,7 +8,7 @@ let addTodo = () => {
   const todoInput = getTodoInput();
   const todoText = todoInput.value;
   const todoItem = new TodoItem(todoText);
-  modelTodos.push(todoItemClass);
+  modelTodos.push(todoItem);
   todoInput.value = '';
   createElement(todoItem);
 }
