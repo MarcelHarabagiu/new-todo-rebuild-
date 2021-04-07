@@ -1,8 +1,10 @@
+
+class Main {
+
 let dom = () => {
   let todoButton = document.querySelector('.todo-button');
   todoButton.addEventListener('click', addTodo);
 }
-window.onload = dom;
 
 let addTodo = () => {
   const todoInput = getTodoInput();
@@ -24,9 +26,12 @@ let createElement = (newTodoObj) => {
   todoDiv.appendChild(todoLi);
   getTodoList().appendChild(todoDiv);
 }
-
-
 const modelTodos = [];
+
+}
+
+window.onload = dom;
+
 
 class TodoItem {
 
