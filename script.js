@@ -7,7 +7,8 @@ window.onload = dom;
 let addTodo = () => {
   const todoInput = getTodoInput();
   const todoText = todoInput.value;
-  const newTodoObj = addToModel(todoText);
+  const newTodo = new NewTodo(todoText);
+  const newTodoObj = newTodo.addToModel(todoText);
   todoInput.value = '';
   createElement(newTodoObj);
 }
