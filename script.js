@@ -8,8 +8,7 @@ let addTodo = () => {
   const todoInput = getTodoInput();
   const todoText = todoInput.value;
   const todoItem = new TodoItem(todoText);
-  todoItem.addToModel(todoText);
-  modelTodos.push(todoItemClass);
+  modelTodos.push(todoItem);
   todoInput.value = '';
   createElement(todoItem);
 }
@@ -33,6 +32,5 @@ class TodoItem {
 
   constructor(text) {
     this.text = text;
-    this.modelClass = modelClass;
   }
 }
