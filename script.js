@@ -34,6 +34,5 @@ class NewTodo {
   constructor(text) {
     this.text = text;
     this.modelClass = modelClass;
-    this.createElement();
   }
 }
