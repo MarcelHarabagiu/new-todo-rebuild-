@@ -7,7 +7,7 @@ window.onload = dom;
 let addTodo = () => {
   const todoInput = getTodoInput();
   const todoText = todoInput.value;
-  const newTodo = new NewTodo(todoText);
+  const newTodo = new TodoItem(todoText);
   newTodo.addToModel(todoText);
   modelTodos.push(todoItemClass);
   todoInput.value = '';
@@ -29,7 +29,7 @@ let createElement = (newTodoObj) => {
 
 const modelTodos = [];
 
-class NewTodo {
+class TodoItem {
 
   constructor(text) {
     this.text = text;
