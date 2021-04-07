@@ -9,7 +9,7 @@ let addTodo = () => {
   const todoText = todoInput.value;
   const newTodo = new NewTodo(todoText);
   newTodo.addToModel(todoText);
-  this.modelTodos.push(todoItemClass);
+  modelTodos.push(todoItemClass);
   todoInput.value = '';
   createElement(newTodo);
 }
