@@ -1,6 +1,8 @@
 
 class Main {
 
+const todoItem = new Main(todoText)
+
 let dom = () => {
   let todoButton = document.querySelector('.todo-button');
   todoButton.addEventListener('click', addTodo);
@@ -30,7 +32,9 @@ const modelTodos = [];
 
 }
 
-window.onload = dom;
+const main = new Main()
+window.onload = main.dom;
+
 
 
 class TodoItem {
