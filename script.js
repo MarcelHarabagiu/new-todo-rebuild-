@@ -7,11 +7,11 @@ window.onload = dom;
 let addTodo = () => {
   const todoInput = getTodoInput();
   const todoText = todoInput.value;
-  const newTodo = new NewTodo(todoText);
-  newTodo.addToModel(todoText);
+  const todoItem = new TodoItem(todoText);
+  todoItem.addToModel(todoText);
   modelTodos.push(todoItemClass);
   todoInput.value = '';
-  createElement(newTodo);
+  createElement(todoItem);
 }
 let getTodoInput = () => document.querySelector('.todo-input');
 let getTodoList = () => document.querySelector('.todo-list');
@@ -29,7 +29,7 @@ let createElement = (newTodoObj) => {
 
 const modelTodos = [];
 
-class NewTodo {
+class TodoItem {
 
   constructor(text) {
     this.text = text;
