@@ -8,9 +8,9 @@ let addTodo = () => {
   const todoInput = getTodoInput();
   const todoText = todoInput.value;
   const newTodo = new NewTodo(todoText);
-  const newTodoObj = newTodo.addToModel(todoText);
+  newTodo.addToModel(todoText);
   todoInput.value = '';
-  createElement(newTodoObj);
+  createElement(newTodo);
 }
 let getTodoInput = () => document.querySelector('.todo-input');
 let getTodoList = () => document.querySelector('.todo-list');
