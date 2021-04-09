@@ -1,28 +1,27 @@
-
 class Main {
 
-  modelTodos;
-  todoButton;
-  todoInput;
+  dom() {
+    let todoButton = document.querySelector('.todo-button');
+    const boundAddTodo = this.addTodo.bind(this);
+    todoButton.addEventListener ('click', boundAddTodo);
+  }
 
-
-  dom = () => {
-  this.todoButton = document.querySelector('.todo-button');
-  this.todoButton.addEventListener('click', this.addTodo);
-}
-
-   addTodo = () => {
-    const todoInput = getTodoInput();
-    const todoText = this.todoInput.value;
+  addTodo() {
+    const todoInput = this.getTodoInput();
+    const todoText = todoInput.value;
     const todoItem = new TodoItem(todoText);
     this.modelTodos.push(todoItem);
-    this.todoInput.value = '';
+    todoInput.value = '';
     this.createElement(todoItem);
   }
-  let getTodoInput = () => document.querySelector('.todo-input');
-  let getTodoList = () => document.querySelector('.todo-list');
+  getTodoInput() {
+    return document.querySelector('.todo-input');
+  }
+  getTodoList() {
+    return document.querySelector('.todo-list');
+  }
 
-  let createElement = (newTodoObj) => {
+  createElement (newTodoObj) {
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo');
     const todoLi = document.createElement('li');
@@ -31,13 +30,13 @@ class Main {
     todoDiv.appendChild(todoLi);
     this.getTodoList().appendChild(todoDiv);
   }
-  const modelTodos = [];
-
+  modelTodos = [];
 }
 
-const main = new Main()
-window.onload = main.dom;
-
+window.onload = () => {
+  const main = new Main();
+  main.dom();
+}
 
 class TodoItem {
 
